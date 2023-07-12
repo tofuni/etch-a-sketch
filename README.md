@@ -1,1 +1,2 @@
 # etch-a-sketch
+This project is a browser version that resembles something between a sketchpad and an Etch-a-Sketch. It exhibits and applies the HTML, CSS, and JS foundations learned from the [introductory course](https://www.theodinproject.com/paths/foundations/courses/foundations) offered by The Odin Project.
