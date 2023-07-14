@@ -10,7 +10,32 @@ function createGrid(number) {
     }
 }
 
-createGrid(64);
+createGrid(16);
+
+// Create slider that sets grid size
+const slider = document.querySelector('#slider');
+const gridSize = document.querySelector('#value');
+const sliderVal = slider.value;
+
+gridSize.textContent = `${sliderVal} x ${sliderVal}`;
+
+slider.addEventListener("input", (event) => {
+    let number = event.target.value;
+    gridSize.textContent = `${number} x ${number}`;
+});
+
+slider.addEventListener("click", (event) => {
+    let number = event.target.value;
+    removeGrid();
+    createGrid(number);
+});
+
+// Remove existing grid
+function removeGrid() {
+    while (gridContainer.hasChildNodes()) {
+        gridContainer.removeChild(gridContainer.firstChild);
+    }
+};
 
 // Create fill effects for grid squares
 const gridSquare = document.querySelectorAll('.grid-square');
