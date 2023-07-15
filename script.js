@@ -59,3 +59,14 @@ gridContainer.addEventListener('mouseover', (event) => {
 gridContainer.addEventListener('mouseleave', () => {
     mouseIsDown = false;
 });
+
+/* Create clear option */
+const clear = document.getElementById('reset');
+const gridSquare = gridContainer.childNodes;
+
+clear.addEventListener('click', () => {
+    gridSquare.forEach((square) => {
+        square.classList.remove('fill-square');
+    });
+});
+
