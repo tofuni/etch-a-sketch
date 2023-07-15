@@ -74,8 +74,23 @@ clear.addEventListener('click', () => {
 const gridLines = document.getElementById('grid-lines');
 
 gridLines.addEventListener('click', () => {
+    gridLines.classList.toggle('active');
     gridSquare.forEach((square) => {
         square.classList.toggle('no-grid-lines');
+    });
+});
+
+/* Create ability to select/deselect base control buttons */
+const baseControls = document.querySelectorAll('.base-controls > button');
+
+baseControls.forEach((control) => {
+    control.addEventListener('click', (event) => {
+        baseControls.forEach((btn) => {
+            if (btn !== event.target) {
+                btn.classList.remove('active');
+            };
+        });
+        event.target.classList.toggle('active');
     });
 });
 
