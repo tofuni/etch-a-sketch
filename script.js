@@ -96,15 +96,28 @@ baseControls.forEach((control) => {
 
 /* Create eraser functionality */
 const eraser = document.getElementById('eraser');
+let eraserActive = false;
 
 eraser.addEventListener('click', () => {
-    gridContainer.addEventListener('mousedown', (event) => {
-        mouseIsDown = true;
-        event.target.classList.remove('fill-square');
-    });
-    gridContainer.addEventListener('mouseover', (event) => {
-        if (mouseIsDown) {
+    if (eraserActive === eraser.classList.contains('active')) {
+        gridContainer.addEventListener('mousedown', (event) => {
+            mouseIsDown = true;
+            event.target.classList.add('fill-square');
+        });
+        gridContainer.addEventListener('mouseover', (event) => {
+            if (mouseIsDown) {
+                event.target.classList.add('fill-square');
+            }
+        });
+    } else {
+        gridContainer.addEventListener('mousedown', (event) => {
+            mouseIsDown = true;
             event.target.classList.remove('fill-square');
-        }
-    });
+        });
+        gridContainer.addEventListener('mouseover', (event) => {
+            if (mouseIsDown) {
+                event.target.classList.remove('fill-square');
+            }
+        });
+    }
 });
