@@ -19,15 +19,20 @@ main {
     width: 525px;
     height: 525px;
     display: grid;
+    border: 0.5px solid black;
 }
 
 .grid-square {
     background-color: white;
-    border: 1px solid black;
+    border: 0.5px solid black;
 }
 
 .fill-square {
   background-color: black;
+}
+
+.no-grid-lines {
+  border: none;
 }
 
 /* Sidebar */
@@ -55,4 +60,10 @@ main {
 
 #grid-size {
   margin-top: 1rem;
+}
+
+.extra-options {
+  display: flex;
+  flex-direction: column;
+  row-gap: 1rem;
 }

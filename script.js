@@ -70,3 +70,12 @@ clear.addEventListener('click', () => {
     });
 });
 
+/* Toggle grid lines */
+const gridLines = document.getElementById('grid-lines');
+
+gridLines.addEventListener('click', () => {
+    gridSquare.forEach((square) => {
+        square.classList.toggle('no-grid-lines');
+    });
+});
+
