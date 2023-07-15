@@ -109,7 +109,7 @@ eraser.addEventListener('click', () => {
                 event.target.classList.add('fill-square');
             }
         });
-    } else {
+    } else if (eraserActive !== eraser.classList.contains('active')) {
         gridContainer.addEventListener('mousedown', (event) => {
             mouseIsDown = true;
             event.target.classList.remove('fill-square');
@@ -117,6 +117,41 @@ eraser.addEventListener('click', () => {
         gridContainer.addEventListener('mouseover', (event) => {
             if (mouseIsDown) {
                 event.target.classList.remove('fill-square');
+            }
+        });
+    }
+});
+
+/* Create rainbow mode functionality */
+const randomRgbColor = () => {
+    let r = Math.floor(Math.random() * 256); 
+    let g = Math.floor(Math.random() * 256); 
+    let b = Math.floor(Math.random() * 256); 
+    return `rgb(${r}, ${g}, ${b})`;
+  };
+
+const rainbow = document.getElementById('rainbow');
+let rainbowActive = false;
+
+rainbow.addEventListener('click', () => {
+    if (rainbowActive === rainbow.classList.contains('active')) {
+        gridContainer.addEventListener('mousedown', (event) => {
+            mouseIsDown = true;
+            event.target.removeAttribute('style');
+        });
+        gridContainer.addEventListener('mouseover', (event) => {
+            if (mouseIsDown) {
+                event.target.removeAttribute('style');
+            }
+        });
+    } else if (rainbowActive !== rainbow.classList.contains('active')) {
+        gridContainer.addEventListener('mousedown', (event) => {
+            mouseIsDown = true;
+            event.target.style.backgroundColor = `${randomRgbColor()}`
+        });
+        gridContainer.addEventListener('mouseover', (event) => {
+            if (mouseIsDown) {
+                event.target.style.backgroundColor = `${randomRgbColor()}`
             }
         });
     }
