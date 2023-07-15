@@ -1,5 +1,6 @@
 /* Create 16x16 grid */
 const gridContainer = document.querySelector('.grid-container');
+const gridSquare = gridContainer.childNodes;
 
 function createGrid(number) {
     for (let i = 0; i < (number * number); i++) {
@@ -60,9 +61,8 @@ gridContainer.addEventListener('mouseleave', () => {
     mouseIsDown = false;
 });
 
-/* Create clear option */
+/* Create clear functionality */
 const clear = document.getElementById('reset');
-const gridSquare = gridContainer.childNodes;
 
 clear.addEventListener('click', () => {
     gridSquare.forEach((square) => {
@@ -70,7 +70,7 @@ clear.addEventListener('click', () => {
     });
 });
 
-/* Toggle grid lines */
+/* Create toggle grid lines functionality */
 const gridLines = document.getElementById('grid-lines');
 
 gridLines.addEventListener('click', () => {
@@ -79,3 +79,17 @@ gridLines.addEventListener('click', () => {
     });
 });
 
+/* Create eraser functionality */
+const eraser = document.getElementById('eraser');
+
+eraser.addEventListener('click', () => {
+    gridContainer.addEventListener('mousedown', (event) => {
+        mouseIsDown = true;
+        event.target.classList.remove('fill-square');
+    });
+    gridContainer.addEventListener('mouseover', (event) => {
+        if (mouseIsDown) {
+            event.target.classList.remove('fill-square');
+        }
+    });
+});
