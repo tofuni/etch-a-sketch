@@ -1,6 +1,5 @@
 /* Create 16x16 grid */
 const gridContainer = document.querySelector('.grid-container');
-const gridSquare = gridContainer.childNodes;
 
 function createGrid(number) {
     for (let i = 0; i < (number * number); i++) {
@@ -61,27 +60,8 @@ gridContainer.addEventListener('mouseleave', () => {
     mouseIsDown = false;
 });
 
-/* Create clear functionality */
-const clear = document.getElementById('reset');
-
-clear.addEventListener('click', () => {
-    gridSquare.forEach((square) => {
-        square.classList.remove('fill-square');
-        square.removeAttribute('style');
-    });
-});
-
-/* Create toggle grid lines functionality */
-const gridLines = document.getElementById('grid-lines');
-
-gridLines.addEventListener('click', () => {
-    gridLines.classList.toggle('active');
-    gridSquare.forEach((square) => {
-        square.classList.toggle('no-grid-lines');
-    });
-});
-
-/* Create ability to select/deselect base control buttons */
+/* Base user controls */
+// Create ability to select/deselect base control buttons
 const baseControls = document.querySelectorAll('.base-controls > button');
 
 baseControls.forEach((control) => {
@@ -95,9 +75,8 @@ baseControls.forEach((control) => {
     });
 });
 
-/* Create eraser functionality */
+// Create eraser functionality
 const eraser = document.getElementById('eraser');
-let eraserActive = true;
 
 eraser.addEventListener('click', () => {
     toggleEraser();
@@ -129,7 +108,7 @@ function toggleEraser() {
     };
 };
 
-/* Create rainbow mode functionality */
+// Create rainbow mode functionality
 const randomRgbColor = () => {
     let r = Math.floor(Math.random() * 256);
     let g = Math.floor(Math.random() * 256);
@@ -138,7 +117,6 @@ const randomRgbColor = () => {
 };
 
 const rainbow = document.getElementById('rainbow');
-let rainbowActive = true;
 
 rainbow.addEventListener('click', () => {
     toggleRainbow();
@@ -169,3 +147,26 @@ function toggleRainbow() {
         });
     };
 };
+
+/* Extra user controls */ 
+const gridSquare = gridContainer.childNodes;
+
+// Create clear functionality
+const clear = document.getElementById('reset');
+
+clear.addEventListener('click', () => {
+    gridSquare.forEach((square) => {
+        square.classList.remove('fill-square');
+        square.removeAttribute('style');
+    });
+});
+
+// Create toggle grid lines functionality
+const gridLines = document.getElementById('grid-lines');
+
+gridLines.addEventListener('click', () => {
+    gridLines.classList.toggle('active');
+    gridSquare.forEach((square) => {
+        square.classList.toggle('no-grid-lines');
+    });
+});
