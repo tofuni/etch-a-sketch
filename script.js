@@ -67,6 +67,7 @@ const clear = document.getElementById('reset');
 clear.addEventListener('click', () => {
     gridSquare.forEach((square) => {
         square.classList.remove('fill-square');
+        square.removeAttribute('style');
     });
 });
 
