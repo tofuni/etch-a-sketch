@@ -96,10 +96,14 @@ baseControls.forEach((control) => {
 
 /* Create eraser functionality */
 const eraser = document.getElementById('eraser');
-let eraserActive = false;
+let eraserActive = true;
 
 eraser.addEventListener('click', () => {
-    if (eraserActive === eraser.classList.contains('active')) {
+    toggleEraser();
+});
+
+function toggleEraser() {
+    if (!eraser.classList.contains('active')) {
         gridContainer.addEventListener('mousedown', (event) => {
             mouseIsDown = true;
             event.target.classList.add('fill-square');
@@ -107,34 +111,40 @@ eraser.addEventListener('click', () => {
         gridContainer.addEventListener('mouseover', (event) => {
             if (mouseIsDown) {
                 event.target.classList.add('fill-square');
-            }
+            };
         });
-    } else if (eraserActive !== eraser.classList.contains('active')) {
+    } else if (eraser.classList.contains('active')) {
         gridContainer.addEventListener('mousedown', (event) => {
             mouseIsDown = true;
+            event.target.removeAttribute('style');
             event.target.classList.remove('fill-square');
         });
         gridContainer.addEventListener('mouseover', (event) => {
             if (mouseIsDown) {
+                event.target.removeAttribute('style');
                 event.target.classList.remove('fill-square');
-            }
+            };
         });
-    }
-});
+    };
+};
 
 /* Create rainbow mode functionality */
 const randomRgbColor = () => {
-    let r = Math.floor(Math.random() * 256); 
-    let g = Math.floor(Math.random() * 256); 
-    let b = Math.floor(Math.random() * 256); 
+    let r = Math.floor(Math.random() * 256);
+    let g = Math.floor(Math.random() * 256);
+    let b = Math.floor(Math.random() * 256);
     return `rgb(${r}, ${g}, ${b})`;
-  };
+};
 
 const rainbow = document.getElementById('rainbow');
-let rainbowActive = false;
+let rainbowActive = true;
 
 rainbow.addEventListener('click', () => {
-    if (rainbowActive === rainbow.classList.contains('active')) {
+    toggleRainbow();
+});
+
+function toggleRainbow() {
+    if (!rainbow.classList.contains('active')) {
         gridContainer.addEventListener('mousedown', (event) => {
             mouseIsDown = true;
             event.target.removeAttribute('style');
@@ -142,17 +152,19 @@ rainbow.addEventListener('click', () => {
         gridContainer.addEventListener('mouseover', (event) => {
             if (mouseIsDown) {
                 event.target.removeAttribute('style');
-            }
+            };
         });
-    } else if (rainbowActive !== rainbow.classList.contains('active')) {
+    } else if (rainbow.classList.contains('active')) {
         gridContainer.addEventListener('mousedown', (event) => {
             mouseIsDown = true;
+            event.target.classList.add('fill-square');
             event.target.style.backgroundColor = `${randomRgbColor()}`
         });
         gridContainer.addEventListener('mouseover', (event) => {
             if (mouseIsDown) {
+                event.target.classList.add('fill-square');
                 event.target.style.backgroundColor = `${randomRgbColor()}`
-            }
+            };
         });
-    }
-});
+    };
+};
