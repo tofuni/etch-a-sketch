@@ -96,12 +96,12 @@ function toggleEraser() {
     } else if (eraser.classList.contains('active')) {
         gridContainer.addEventListener('mousedown', (event) => {
             mouseIsDown = true;
-            event.target.removeAttribute('style');
+            event.target.style.removeProperty('background-color');
             event.target.classList.remove('fill-square');
         });
         gridContainer.addEventListener('mouseover', (event) => {
             if (mouseIsDown) {
-                event.target.removeAttribute('style');
+                event.target.style.removeProperty('background-color');
                 event.target.classList.remove('fill-square');
             };
         });
@@ -126,11 +126,11 @@ function toggleRainbow() {
     if (!rainbow.classList.contains('active')) {
         gridContainer.addEventListener('mousedown', (event) => {
             mouseIsDown = true;
-            event.target.removeAttribute('style');
+            event.target.style.removeProperty('background-color');
         });
         gridContainer.addEventListener('mouseover', (event) => {
             if (mouseIsDown) {
-                event.target.removeAttribute('style');
+                event.target.style.removeProperty('background-color');
             };
         });
     } else if (rainbow.classList.contains('active')) {
@@ -148,7 +148,7 @@ function toggleRainbow() {
     };
 };
 
-// Create shading functionality
+/* Create shader controls */
 const shadeControls = document.querySelectorAll('.shade-controls > button');
 
 shadeControls.forEach((control) => {
@@ -161,38 +161,6 @@ shadeControls.forEach((control) => {
         event.target.classList.toggle('active');
     });
 });
-
-const shading = document.getElementById('shading');
-
-shading.addEventListener('click', () => {
-    toggleShading();
-});
-
-function toggleShading() {
-    if (!shading.classList.contains('active')) {
-        gridContainer.addEventListener('mousedown', (event) => {
-            mouseIsDown = true;
-            event.target.removeAttribute('style');
-        });
-        gridContainer.addEventListener('mouseover', (event) => {
-            if (mouseIsDown) {
-                event.target.removeAttribute('style');
-            };
-        });
-    } else if (shading.classList.contains('active')) {
-        gridContainer.addEventListener('mousedown', (event) => {
-            mouseIsDown = true;
-            event.target.classList.add('fill-square');
-            event.target.style.opacity -= '-0.1';
-        });
-        gridContainer.addEventListener('mouseover', (event) => {
-            if (mouseIsDown) {
-                event.target.classList.add('fill-square');
-                event.target.style.opacity -= '-0.1';
-            };
-        });
-    };
-};
 
 /* Extra user controls */
 const gridSquare = gridContainer.childNodes;
