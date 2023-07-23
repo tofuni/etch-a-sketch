@@ -38,12 +38,12 @@ main {
     display: grid;
     border: 0.5px solid black;
     border-radius: 6px;
-    background-color: #706993;
+    background-color: #706993!important;
     padding: 1.5rem;
   }
 
 .grid-square {
-    background-color: white;
+    background-color: #F4F1DE;
     border: 0.5px solid #dadada;
 }
 
@@ -90,6 +90,11 @@ main {
   cursor: pointer;
 }
 
+#slider::-webkit-slider-thumb:hover {
+  background-color: #81B29A;
+}
+
+
 #grid-size {
   margin-top: 1rem;
   font-size: 0.65rem;
@@ -117,4 +122,42 @@ main {
 .active {
   background-color: #F4F1DE;
   color: #81B29A;
+}
+
+/* Mobile */
+@media (max-width: 767px) {
+  header {
+    padding-bottom: 1rem;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  main {
+    flex-direction: column-reverse;
+    row-gap: 2rem;
+  }
+
+  .grid-container {
+    width: 300px;
+    height: 300px;
+  }
+}
+
+/* Tablet */
+@media (min-width: 768px) and (max-width: 912px) {
+  main {
+    flex-direction: column-reverse;
+    row-gap: 2rem;
+  }
+  .sidebar {
+    width: 450px;
+  }
+  .button {
+    width: 375px;
+  }
+  #slider {
+    width: 350px;
+  }
 }
