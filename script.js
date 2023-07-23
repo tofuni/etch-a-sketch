@@ -148,20 +148,6 @@ function toggleRainbow() {
     };
 };
 
-/* Create shader controls */
-const shadeControls = document.querySelectorAll('.shade-controls > button');
-
-shadeControls.forEach((control) => {
-    control.addEventListener('click', (event) => {
-        shadeControls.forEach((btn) => {
-            if (btn !== event.target) {
-                btn.classList.remove('active');
-            };
-        });
-        event.target.classList.toggle('active');
-    });
-});
-
 /* Extra user controls */
 const gridSquare = gridContainer.childNodes;
 
