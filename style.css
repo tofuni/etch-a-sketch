@@ -26,7 +26,8 @@ main {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-  padding: 2rem 3rem;
+  padding: 2rem 3rem 3rem;
+  column-gap: 2rem;
 }
 
 /* Sketch pad */
@@ -122,6 +123,25 @@ main {
 .active {
   background-color: #F4F1DE;
   color: #81B29A;
+}
+
+/* Footer */
+footer {
+  display: flex;
+  justify-content: center;
+  background-color: #706993;
+  padding: 1rem 0 0.5rem;
+  margin-top: auto;
+}
+
+.fa.fa-github {
+  font-size: 2rem;
+  color: #ffffff;
+}
+
+.fa.fa-github:hover {
+  transition: transform 0.3s ease-in-out;
+  transform: rotate(360deg) scale(1.2);
 }
 
 /* Mobile */
